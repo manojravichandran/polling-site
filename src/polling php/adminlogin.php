@@ -1,4 +1,4 @@
-<form action="chekuser.php" method="post">
+<form action="validation.php" method="post">
     <div class="imgcontainer">
      
     </div>
@@ -18,6 +18,3 @@
 
     
   </form>
-<?php 
-  echo" <a href='adminlogin.php'>admin</a> ";
-?>

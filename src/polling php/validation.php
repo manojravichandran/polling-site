@@ -2,23 +2,25 @@
 
 $uname="admin";
 $pwd="admin";
-$cuname=$_POST['uname'];
-$cpwd=$_POST['pwd'];
+$cuname=(isset($_POST['uname']));
+$cpwd=(isset($_POST['pwd']));
 
 
 session_start();
 if(isset($_SESSION['uname'])){
 
-    echo "<script>location.href='admin.php'</script>";
+
+    echo" <a href='logout.php'>logout</a> ";
 }
 else{
-    if($_POST['uname'] && $_POST['pwd']==$pwd){
+    if($cuname==$uname && $cpwd==$pwd){
 
         $_SESSION['uname']=$uname;
         echo "<script>location.href='validation.php'</script>";
+       
     }
     else{
-        header('Location:checkuser.php?id=7');
+        header('Location:login.php');
     }
 }
 
