@@ -5,12 +5,12 @@
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input type="text" placeholder="Enter Username" id="uname" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="pwd" required>
+      <input type="password" placeholder="Enter Password" name="pwd"  id="pwd" required>
       
-      <input type="submit" value="Login" name="Login">
+      <input type="submit" value="submit" id="btn" name="submit">
       <label>
      
       </label>

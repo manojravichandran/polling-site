@@ -3,10 +3,14 @@
 
 session_start();
 if(isset($_SESSION['uname'])){
-echo "user";
-    echo" <a href='product.php'>product</a> ";
+    $a=$_SESSION['uname'];
+
+    echo "this is my fucking ".$a."session";
+    echo "<br>";
+    echo "session is ".$_SESSION['uname']."here";
     echo" <a href='logout.php'>logout</a> ";
-    echo "sfa";
+    echo" <a href='product.php'>product</a> ";
+    
 }
 
     else{

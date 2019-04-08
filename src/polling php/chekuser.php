@@ -1,50 +1,42 @@
 <?php
+$uname=$_POST['uname'];
+$pwd=$_POST['pwd'];
 
-$cuname = $_POST["uname"];
-$cpwd = $_POST["pwd"];
-
-
-$uname="admin";
-$pwd="admin";
-$mj="mj";
-$cmj="mj";
-$c = mysqli_connect("localhost","root","");
-if($a = mysqli_select_db($c,'votepool')){
-     
-     
-    $result = mysqli_query($c,"select * from users where id='$cuname' and password='$cpwd'");
-    while($row = mysqli_fetch_array($result)){
-       echo "ADMIN IRUKU";
-}
-
-}
- 
+//prevent mysql injection
+$uname=stripcslashes($uname);
+$pwd=stripcslashes($pwd);
 
 
+$conn=mysqli_connect("localhost","root","");
+mysqli_select_db($conn,"votepool");
+
+$result=mysqli_query($conn,"select * from users where id='$uname' and password='$pwd'") or die("cannot connect".mysql_error());
+$row=mysqli_fetch_array($result);
 
 session_start();
 if(isset($_SESSION['uname'])){
+    
 
-    echo "<br>";
-    echo" <a href='logout.php'>logout</a> ";
-    echo "<br>";
-    echo "the user is ";
-  
-    echo $cuname;
-    echo $cpwd;
+    header('location:user.php');
+
 }
 else{
-    if($cuname==$uname && $cpwd==$pwd){
+    if($row['id']==$uname && $row['password']==$pwd){
 
         $_SESSION['uname']=$uname;
+        
+      
+
         echo "<script>location.href='chekuser.php'</script>";
        
     }
     else{
+        
         header('Location:login.php');
     }
 }
 
 
 
-?>
+
+?> 
